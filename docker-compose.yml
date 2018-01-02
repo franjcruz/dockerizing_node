@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   api:
     # build: ./ apuntando a Dockerfile
@@ -11,5 +11,5 @@ services:
       
     ports:
       - "3000:3000"
-      
+
     command: [npm, start]
