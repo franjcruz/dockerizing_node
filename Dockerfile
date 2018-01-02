@@ -1,12 +1,25 @@
-# https://hub.docker.com/_/node/
 FROM node:carbon
+MAINTAINER fran cruz
+RUN echo "building API from master"
 
-# Create app directory
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-RUN git clone -b master https://github.com/franjcruz/dockerizing_node.git . && \
-    npm install
+# copy package.json and install dependencies
+COPY package.json /usr/src/app
+RUN npm install
+
+# copy source code
+COPY . /usr/src/app
 
 EXPOSE 3000
+CMD ["npm", "run"]
 
-CMD [ "npm", "start" ]
+# docker build command
+# $ docker build -t api-demo:latest . --no-cache
+
+# docker run command
+# $ docker run -it --rm -v $PWD:/usr/src/app/ -v /usr/src/app/node_modules -P api-demo:latest
+
+# install dependencies development
+# $ docker exec -it [container id or name ] npm install --save lodash
