@@ -7,6 +7,6 @@ WORKDIR /usr/src/app
 RUN git clone -b master https://github.com/franjcruz/dockerizing_node.git . && \
     npm install
 
-EXPOSE 8080
+EXPOSE 3000
 
 CMD [ "npm", "start" ]

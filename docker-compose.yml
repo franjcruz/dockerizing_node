@@ -1,0 +1,15 @@
+version: '3'
+services:
+  api:
+    # build: ./ apuntando a Dockerfile
+    build: ./
+
+    image: nodeapp:latest
+    
+    labels:
+      com.app-demo-infra.web.description: "Node API"
+      
+    ports:
+      - "3000:3000"
+      
+    command: [npm, start]
